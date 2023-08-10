@@ -49,21 +49,20 @@ function ProductScreen () {
         };
         fetchData();
       },[slug]);  
-    
      const{state, dispatch: ctxDispatch}= useContext(Store);
-     const {cart}=state;
+    const {cart}=state;
 
     const addToCartHandler = async() => {
-      const existItem=cart.cartItems.find((x)=> x._id===product._id)
-      const quantity = existItem? existItem.quantity +1 :1;
-      const {data} = await axios.get(`/api/products/${product._id}`);
-      if(data.countInStock <quantity){
-        window.alert('Sorry.Product is out of stock')
-        return;
-      }
+      // const existItem=cart.cartItems.find((x)=> x._id===product._id)
+      // const quantity = existItem? existItem.quantity +1 :1;
+      // //const {data} = await axios.get(`/api/products/${product._id}`);
+      // if(product.countInStock  < quantity){
+      //   window.alert('Sorry.Product is out of stock')
+      //   return;
+      // } 
 
-      ctxDispatch({
-        type:'CART_ADD-ITEM',
+      ctxDispatch({ 
+        type:'CART_ADD_ITEM',
       payload:{...product,quantity:1},
     });
 
@@ -129,7 +128,7 @@ function ProductScreen () {
               {product.countInStock >0 && (
                   <ListGroup.Item>
                     <div className="d-grid">
-                      <Button  onClick={addToCartHandler} varient="primary" >Add to Cart</Button>
+                      <Button  onClick={addToCartHandler} variant="primary" >Add to Cart</Button>
                     </div>    
               </ListGroup.Item>
               )}

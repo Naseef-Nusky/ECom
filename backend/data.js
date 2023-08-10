@@ -1,6 +1,7 @@
 const data = {
     products: [
       {
+       
         _id:1,
         name: 'Nike Slim shirt',
         slug: 'nike-slim-shirt',
